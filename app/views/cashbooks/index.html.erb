@@ -1,0 +1,39 @@
+<h1>Listing cashbooks</h1>
+Opening Balance : <%= @opening_balance %>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Ledger</th>
+      <th>Debit or credit</th>
+      <th>Amount</th>
+      <th>Balance</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cashbooks.each do |cashbook| %>
+      <tr>
+        <td><%= cashbook.date %></td>
+        <td><%= link_to cashbook.ledger.name, ledger_summary_path(:ledger_id => cashbook.ledger_id) %></td>
+        <td><%= cashbook.debit_or_credit %></td>
+        <td><%= cashbook.amount %></td>
+        <td>  
+          <% if cashbook.debit_or_credit == "Credit" %>
+            <%= @opening_balance += cashbook.amount  %>
+          <% else %>
+            <%= @opening_balance -= cashbook.amount  %>
+            <% end %>
+        </td>  
+        <td><%= link_to 'Show', cashbook %></td>
+        <td><%= link_to 'Edit', edit_cashbook_path(cashbook) %></td>
+        <td><%= link_to 'Destroy', cashbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transaction', new_cashbook_path %>

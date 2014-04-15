@@ -1,0 +1,19 @@
+<%= form_for(@cashbook) do |f| %>
+  <% if @cashbook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cashbook.errors.count, "error") %> prohibited this cashbook from being saved:</h2>
+
+      <ul>
+      <% @cashbook.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  
+  Date: <%= f.date_select :date %> <br>
+Ledger ID : <%= f.select :ledger_id, Ledger.all.collect {|t| [t.name, t.id]}, { include_blank: true}%> <br>
+Debit or Credit :   <%= f.select(:debit_or_credit, %w{ Debit Credit }) %> <br>
+Amount :   <%= f.text_field :amount %> <br>
+   <%= f.submit "Create Voucher"%>
+   <% end %>

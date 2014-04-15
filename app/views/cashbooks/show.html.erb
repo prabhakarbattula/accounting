@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @cashbook.date %>
+</p>
+
+<p>
+  <strong>Ledger:</strong>
+  <%= @cashbook.ledger_id %>
+</p>
+
+<p>
+  <strong>Debit or credit:</strong>
+  <%= @cashbook.debit_or_credit %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @cashbook.amount %>
+</p>
+
+<%= link_to 'Edit', edit_cashbook_path(@cashbook) %> |
+<%= link_to 'Back', cashbooks_path %>
