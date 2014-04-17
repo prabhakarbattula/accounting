@@ -16,7 +16,7 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.date %></td>
+        <td><%= transaction.date.strftime("%d-%b-%Y") %></td>
         <td><%= transaction.debit.name%></td>
         <td><%= transaction.credit.name %></td>
         <td><%= transaction.amount %></td>      
