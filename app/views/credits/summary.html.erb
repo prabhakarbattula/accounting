@@ -1,6 +1,7 @@
-<h1>Ledger Details</h1>
+<h3><%= @credit_transactions.first.credit.name %> Ledger Details</h3>
 
-<table>
+
+<table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
       <th>Date</th>
@@ -16,7 +17,7 @@
       <tr>
         <td><%= transaction.date %></td>
         
-        <td><%= transaction.credit.name %></td>
+        <td><%= Debit.find(transaction.debit_id).name %></td>
         <td align="right"><%= transaction.amount %></td>      
         <td align="right"> <%= @total = @zero += transaction.amount %> </td>
       </tr>
@@ -26,4 +27,4 @@
 <%#= @total %>
 <br>
 
-<%= link_to 'back', cashbooks_path %>
+<%= link_to 'back', cashbooks_path, class: "btn btn-mini btn-primary active" %>
