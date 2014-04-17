@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @transactions.each do |transaction| %>
+    <% @transactions_debit.each do |transaction| %>
       <tr>
         <td><%= transaction.date.strftime("%d-%b-%Y") %></td>
         <td><%= transaction.debit.name%></td>

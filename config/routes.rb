@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :cashbooks, :debits 
-    
+  resources :cashbooks
+  
+  resources :debits do
+    get 'summary'
+  end
 
   resources :credits do
     get 'summary'

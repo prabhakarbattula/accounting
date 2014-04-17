@@ -9,7 +9,7 @@ class DebitsController < ApplicationController
 
   def summary
     debit = Debit.where(:id => params[:debit_id]).first
-    @transactions = debit.cashbooks
+    @transactions_debit = debit.cashbooks
   end
 
   # GET /debits/1

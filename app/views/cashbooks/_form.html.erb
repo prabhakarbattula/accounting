@@ -10,11 +10,14 @@
       </ul>
     </div>
     <% end %>
+  <head>
+  <meta charset="utf-8">
   
-  Date: <%= f.date_select :date %> <br>
+
+Date :  <%= f.date_field :date %> <br>
 Debit : <%= f.select :debit_id, Debit.all.collect {|t| [t.name, t.id]}%> <br>
 Credit : <%= f.select :credit_id, Credit.all.collect {|t| [t.name, t.id]}, { include_blank: true}%> <br>
 
 Amount :   <%= f.text_field :amount %> <br>
-   <%= f.submit "Voucher"%>
+   <%= f.submit "Voucher", class: "btn btn-success btn-small active" %>
    <% end %>
