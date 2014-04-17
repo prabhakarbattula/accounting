@@ -8,8 +8,8 @@ OPENING_BALANCE = 10000.00
   def index
     @opening_balance = OPENING_BALANCE
     @cashbooks = Cashbook.all
-    @credits = Cashbook.where(debit_or_credit: "Credit")
-    @debits = Cashbook.where(debit_or_credit: "Debit")
+    @cash_credits = Cashbook.where(credit_id: 1)
+    @cash_debits = Cashbook.where(debit_id: 1)
   end
 
   # GET /cashbooks/1
@@ -74,6 +74,6 @@ OPENING_BALANCE = 10000.00
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cashbook_params
-      params.require(:cashbook).permit(:date, :ledger_id, :debit_or_credit, :amount)
+      params.require(:cashbook).permit(:date, :debit_id, :credit_id, :amount)
     end
 end

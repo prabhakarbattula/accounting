@@ -12,12 +12,12 @@
   </thead>
 
   <tbody>
-    <% @transactions.each do |credit| %>
+    <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= credit.date %></td>
-        <td><%= credit.ledger.name%></td>
-        <td><%= credit.debit_or_credit %></td>
-        <td><%= credit.amount %></td>      
+        <td><%= transaction.date %></td>
+        <td><%= transaction.debit.name%></td>
+        <td><%= transaction.credit.name %></td>
+        <td><%= transaction.amount %></td>      
         
       </tr>
     <% end %>

@@ -1,11 +1,12 @@
 <h1>Listing cashbooks</h1>
-Opening Balance : <%= @opening_balance %>
+
+Opening Balance as on : <%= @cashbooks.first.created_at %>  is Rs.<%= @opening_balance.to_d %> <hr>
+
 <table>
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Ledger</th>
-      <th>Debit or credit</th>
+      <th>Date</th>      
+      <th>Credit</th>
       <th>Amount</th>
       <th>Balance</th>
       <th colspan="3">Actions</th>
@@ -16,15 +17,11 @@ Opening Balance : <%= @opening_balance %>
     <% @cashbooks.each do |cashbook| %>
       <tr>
         <td><%= cashbook.date %></td>
-        <td><%= link_to cashbook.ledger.name, ledger_summary_path(:ledger_id => cashbook.ledger_id) %></td>
-        <td><%= cashbook.debit_or_credit %></td>
-        <td><%= cashbook.amount %></td>
-        <td>  
-          <% if cashbook.debit_or_credit == "Credit" %>
-            <%= @opening_balance += cashbook.amount  %>
-          <% else %>
-            <%= @opening_balance -= cashbook.amount  %>
-            <% end %>
+        <%#= link_to cashbook.debit.name, debit_summary_path(:debit_id => cashbook.debit_id) %>
+        <td> <%= link_to Credit.find(cashbook.credit_id).name, credit_summary_path(:credit_id => cashbook.credit_id) %> </td>
+        <td align="right"><%= cashbook.amount.to_d %></td>
+        <td align="right">  
+            <%= @opening_balance -= cashbook.amount.to_d %> 
         </td>  
         <td><%= link_to 'Show', cashbook %></td>
         <td><%= link_to 'Edit', edit_cashbook_path(cashbook) %></td>

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :cashbooks 
+  
+  resources :cashbooks, :debits 
     
 
-  resources :ledgers do
+  resources :credits do
     get 'summary'
   end
 

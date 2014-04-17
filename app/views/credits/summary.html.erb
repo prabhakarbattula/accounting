@@ -1,0 +1,29 @@
+<h1>Ledger Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Ledger</th>
+      
+      <th>Credit</th>
+      <th>Total</th>      
+    </tr>
+  </thead>
+<% @zero = 0 %> 
+  <tbody>
+    <% @credit_transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.date %></td>
+        
+        <td><%= transaction.credit.name %></td>
+        <td align="right"><%= transaction.amount %></td>      
+        <td align="right"> <%= @total = @zero += transaction.amount %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%#= @total %>
+<br>
+
+<%= link_to 'back', cashbooks_path %>

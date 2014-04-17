@@ -12,8 +12,9 @@
     <% end %>
   
   Date: <%= f.date_select :date %> <br>
-Ledger ID : <%= f.select :ledger_id, Ledger.all.collect {|t| [t.name, t.id]}, { include_blank: true}%> <br>
-Debit or Credit :   <%= f.select(:debit_or_credit, %w{ Debit Credit }) %> <br>
+Debit : <%= f.select :debit_id, Debit.all.collect {|t| [t.name, t.id]}%> <br>
+Credit : <%= f.select :credit_id, Credit.all.collect {|t| [t.name, t.id]}, { include_blank: true}%> <br>
+
 Amount :   <%= f.text_field :amount %> <br>
-   <%= f.submit "Create Voucher"%>
+   <%= f.submit "Voucher"%>
    <% end %>

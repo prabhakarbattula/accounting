@@ -11,18 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415112551) do
+ActiveRecord::Schema.define(version: 20140416140840) do
 
   create_table "cashbooks", force: true do |t|
     t.date     "date"
-    t.integer  "ledger_id"
-    t.string   "debit_or_credit"
     t.float    "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "debit_id"
+    t.integer  "credit_id"
+  end
+
+  create_table "credits", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "ledgers", force: true do |t|
+  create_table "debits", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
